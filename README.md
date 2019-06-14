@@ -119,4 +119,17 @@ When retrieving an `action` by _id_, add a property that lists all the `contexts
 
 **Remember to run `npm init -y` to generate a _package.json_ before adding your dependencies.**
 
-_Good luck and have fun!_
+**yarn commands**
+yarn init 
+-add dependencies and developer dependencies-
+yarn add express, helmet, sqlite, knex
+yarn add knex-cleaner nodemon --dev
+-set up the knex migrations-
+yarn knex init
+yarn knex migrate: make name-of-migration
+yarn knex migrate:latest
+-set up knex cleanup seed-
+yarn knex seed:make 000-cleanup
+-set up knex seeds-
+yarn knex seed:make 001-name-of-seed
+yarn knex seed:run
