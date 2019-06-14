@@ -8,10 +8,10 @@ exports.up = function(knex, Promise) {
     })
 
     .createTable('actions', function(table) {
-      table.increments(id).primary();
+      table.increments();
   
       table
-        .integer('id')
+        .integer('project_id')
         .unsigned()
         .notNullable()
         .references('id')
