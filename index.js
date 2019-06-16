@@ -77,9 +77,6 @@ server.post('/api/projects', async (req, res) => {
           res.status(500).json(error);
         }
       });
-      const errors = {
-        '19': 'Another record with that value exists',
-      };
   
       server.get('/api/projects/:id/actions', async (req, res) => {
         try {
@@ -127,14 +124,17 @@ server.post('/api/projects', async (req, res) => {
           } else {
             res.status(404).json({ message: 'Action not found' });
           }
-        } catch (error) {}
+        } catch (error) {
+          console.log(error);
+          
+        }
       });
 
       server.delete('/api/projects/:id', async (req, res) => {
         try {
           const count = await db('projects')
             .where({ id: req.params.id })
-            .del();
+            .truncate();
       
           if (count > 0) {
             res.status(204).end();
@@ -148,7 +148,7 @@ server.post('/api/projects', async (req, res) => {
         try {
           const count = await db('actions')
             .where({ id: req.params.id })
-            .del();
+            .truncate();
       
           if (count > 0) {
             res.status(204).end();
